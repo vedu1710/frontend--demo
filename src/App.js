@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { BrowserRouter,Route } from 'react-router-dom';
 import './App.css';
 import AddProduct from './components/addproduct';
+import Dashboard from './components/dashboard';
 import Header from './components/header';
 import Login from './components/login';
 import Signup from './components/signup';
