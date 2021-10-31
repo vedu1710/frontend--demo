@@ -3,7 +3,7 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import React, { useContext } from 'react'
 import app_config from '../config';
 import { ProductContext } from '../productContext';
-import { Form, Formik, ErrorMessage, Field } from 'formik';
+import { Form, Formik, ErrorMessage } from 'formik';
 
 
 const AddProduct = () => {
@@ -46,10 +46,10 @@ const AddProduct = () => {
                 <Formik initialValues={initialValues} onSubmit={onSubmit} >
                     {(props) => (
                         <Form>
-                            <Field as={TextField} label="Product Name" placeholder='Enter your product name' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Name" />} />
-                            <Field as={TextField} label="Product Price" placeholder='Enter your product price' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Price" />} />
-                            <Field as={TextField} label="Product Details" placeholder='Enter your product details' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Details" />} />
-                            <Field as={TextField} label="Product Category" placeholder='Enter your product category' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Ctegory" />} />
+                            <TextField label="Product Name" placeholder='Enter your product name' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Name" />} />
+                            <TextField label="Product Price" placeholder='Enter your product price' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Price" />} />
+                            <TextField label="Product Details" placeholder='Enter your product details' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Details" />} />
+                            <TextField label="Product Category" placeholder='Enter your product category' variant="standard" fullWidth required helperText={<ErrorMessage name="Product Ctegory" />} />
 
 
                             <Button type='submit' variant='contained' color='primary'>Add Product</Button>

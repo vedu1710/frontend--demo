@@ -36,8 +36,8 @@ const Login = ({ handleChange }) => {
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                     {(props) => (
                         <Form>
-                            <Field as={TextField} label="Username" placeholder='Enter username' variant="standard" fullWidth required helperText={<ErrorMessage name="username" />} />
-                            <Field as={TextField} label="Password" placeholder='Enter password' type='password' variant="standard" fullWidth required helperText={<ErrorMessage name="password" />} />
+                            <TextField label="Username" placeholder='Enter username' variant="standard" fullWidth required helperText={<ErrorMessage name="username" />} />
+                            <TextField label="Password" placeholder='Enter password' type='password' variant="standard" fullWidth required helperText={<ErrorMessage name="password" />} />
                             <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" />
                             <Button type='Submit' color='primary' variant="contained" fullWidth>Log In</Button>
                         </Form>

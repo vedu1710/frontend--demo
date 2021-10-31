@@ -1,7 +1,7 @@
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import { Avatar, Button, Checkbox, FormControlLabel, Grid, Paper,  TextField, Typography } from '@mui/material'
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage,  Form, Formik } from 'formik';
 import React from 'react'
 import * as Yup from 'yup'
 
@@ -51,12 +51,12 @@ const Signup = () => {
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onsubmit}>
                     {(props) => (
                         <Form>
-                <Field as={TextField} label="Name" placeholder='Enter your name' variant="standard" fullWidth required helperText={<ErrorMessage name="name" />}/>
-                <Field as={TextField} label="Email" placeholder='Enter your email' variant="standard" fullWidth required helperText={<ErrorMessage name="email" />}/>
+                <TextField label="Name" placeholder='Enter your name' variant="standard" fullWidth required helperText={<ErrorMessage name="name" />}/>
+                <TextField label="Email" placeholder='Enter your email' variant="standard" fullWidth required helperText={<ErrorMessage name="email" />}/>
                     
-                    <Field as={TextField} label="Phone Number" placeholder='Enter your phone number' variant="standard" fullWidth required helperText={<ErrorMessage name="phone number" />}/>
-                    <Field as={TextField} label="Password" placeholder='Enter your password' variant="standard" fullWidth required helperText={<ErrorMessage name="password" />}/>
-                    <Field as={TextField} label="Confirm Password" placeholder='Confirm your password' variant="standard" fullWidth required helperText={<ErrorMessage name="confirm password" />}/>
+                    <TextField label="Phone Number" placeholder='Enter your phone number' variant="standard" fullWidth required helperText={<ErrorMessage name="phone number" />}/>
+                    <TextField label="Password" placeholder='Enter your password' variant="standard" fullWidth required helperText={<ErrorMessage name="password" />}/>
+                    <TextField label="Confirm Password" placeholder='Confirm your password' variant="standard" fullWidth required helperText={<ErrorMessage name="confirm password" />}/>
                     <FormControlLabel
                         control={<Checkbox name="checkedA" />}
                         label="I accept the terms and conditions."
