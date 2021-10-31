@@ -31,6 +31,32 @@ const Header = (props) => {
                 dashboard
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/chart" activeClassName="active" className="nav-link" aria-current="page">
+                chart
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/deposits" activeClassName="active" className="nav-link" aria-current="page">
+                deposits
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/listItems" activeClassName="active" className="nav-link" aria-current="page">
+                listItems
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/orders" activeClassName="active" className="nav-link" aria-current="page">
+                orders
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink to="/title" activeClassName="active" className="nav-link" aria-current="page">
+                Title
+              </NavLink>
+            </li>
+            
             
             <li className="nav-item">
             <h2>{productArray.length}</h2>
