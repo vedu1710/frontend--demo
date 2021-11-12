@@ -1,7 +1,9 @@
-import  React from 'react';
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
+import app_config from '../../config';
+import { useState, useEffect } from 'react';
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -22,13 +24,48 @@ const data = [
 
 export default function Chart() {
   const theme = useTheme();
+  const url = app_config.api_url;
 
-  return (
-    <React.Fragment>
-      <Title>Today</Title>
-      <ResponsiveContainer>
+  const [productArray, setProductArray] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [productQty, setProductQty] = useState([]);
+
+  const fetchProductData = () => {
+    fetch(url + '/product/getall')
+      .then((res) => {
+        console.log(res.status);
+        return res.json();
+      })
+      .then((data => {
+        console.log(data);
+        setLoading(false);
+        setProductArray(data);
+        setProductQty(prepareData(data, 'name', 'quantity'));
+      }))
+  }
+
+  useEffect(() => {
+    fetchProductData();
+  }, [])
+
+  const prepareData = (data, x, y) => {
+    const chartData = [];
+    for (let item of data) {
+      const entry = {};
+      entry[x] = item[x];
+      entry[y] = item[y];
+      chartData.push(entry)
+    }
+    console.log(chartData)
+    return chartData;
+  }
+
+  const showChart = (key) => {
+    if (!loading) {
+      return (
         <LineChart
-          data={data}
+          data={productQty}
           margin={{
             top: 16,
             right: 16,
@@ -60,11 +97,20 @@ export default function Chart() {
           <Line
             isAnimationActive={false}
             type="monotone"
-            dataKey="amount"
+            dataKey={key}
             stroke={theme.palette.primary.main}
             dot={false}
           />
         </LineChart>
+      )
+    }
+  }
+
+  return (
+    <React.Fragment>
+      <Title>Today</Title>
+      <ResponsiveContainer>
+        {showChart('qty')}
       </ResponsiveContainer>
     </React.Fragment>
   );
