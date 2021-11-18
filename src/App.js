@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import React, { useState } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Chart from './components/dashboard/Chart';
 import Dashboard from './components/dashboard/Dashboard';
@@ -40,6 +40,9 @@ function App() {
             <Route path="/Chart" component={Chart}></Route>
             <Route path="/Deposits" component={Deposits}></Route>
             <Route path="/Orders" component={Orders}></Route>
+            <Route exact path="/">
+              <Redirect to="/dashboard" />
+            </Route>
           </BrowserRouter>
         </ProductProvider>
       </ThemeProvider>

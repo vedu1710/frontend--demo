@@ -1,14 +1,16 @@
 import { Avatar, Button, Grid, Paper, TextField } from '@mui/material';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import app_config from '../config';
 import { ProductContext } from '../productContext';
 import { Form, Formik, ErrorMessage } from 'formik';
 import Swal from 'sweetalert2';
+import { io } from "socket.io-client";
 
 
 const AddProduct = () => {
 
+    const [socket, setSocket] = useState(io(url, { autoConnect: false }));
     const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
     const headerStyle = { margin: 0 }
     const avatarStyle = { backgroundColor: '#1bbd7e' }
@@ -23,6 +25,10 @@ const AddProduct = () => {
         category: '',
         quantity: '',
     }
+
+    useEffect(() => {
+        socket.connect();
+      }, []);
 
     const onSubmit = (values, props) => {
         console.log(values)
@@ -49,7 +55,7 @@ const AddProduct = () => {
             .then((data) => {
                 console.log(data);
                 fetchProductDetails();
-
+                socket.emit('adddata', {});
             })
 
     }
